@@ -5,10 +5,12 @@
  * @param {Express.Request} req - the actual request
  */
 function pimProductRouter(context, req) {
-    var res = context.res;
-    var id = context.bindings.params.id;
     context.log.info("pim router invoked");
     context.log.info(JSON.stringify(context.bindings));
+    context.log.info(JSON.stringify(req));
+    
+    var res = context.res;
+    var id = req.params.id;
     context.log.info("id is:" + id);
     context.log.info("req method:" + req.method);
     switch (req.method) {
