@@ -7,9 +7,9 @@
 function pimProductRouter(context, req) {
     var res = context.res;
     var id = context.bindings.id;
-    console.log.info("pim router invoked");
-    console.log.info("id is:" + id);
-    console.log.info("req method:" + req.method);
+    context.log.info("pim router invoked");
+    context.log.info("id is:" + id);
+    context.log.info("req method:" + req.method);
     switch (req.method) {
         case 'GET':
             if (id) {
