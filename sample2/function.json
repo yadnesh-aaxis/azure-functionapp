@@ -7,7 +7,7 @@
             "direction": "in",
             "authLevel": "anonymous",
             "methods": [ "GET", "POST", "PATCH", "PUT", "DELETE" ],
-            "route": "pim/product/{id:alpha?}"
+            "route": "pim/product/{id:int?}"
         },
         {
             "type": "http",

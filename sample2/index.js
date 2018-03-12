@@ -1,11 +1,11 @@
 let products=[
-{"id":"p1", name:"Sony Camera", price:533.23},
-{"id":"p2", name:"LG TV", price:533.23},
-{"id":"p3", name:"GoPRO Camera", price:533.23},
-{"id":"p4", name:"Fire TV", price:30},
-{"id":"p5", name:"Chromecast Video", price:25},
-{"id":"p6", name:"PINE64", price:33.23},
-{"id":"p7", name:"SOny Projector", price:933.23}
+{"id":"1001", name:"Sony Camera", price:533.23},
+{"id":"1002", name:"LG TV", price:533.23},
+{"id":"1003", name:"GoPRO Camera", price:533.23},
+{"id":"1004", name:"Fire TV", price:30},
+{"id":"1005", name:"Chromecast Video", price:25},
+{"id":"1006", name:"PINE64", price:33.23},
+{"id":"1007", name:"Sony Projector", price:933.23}
 ];
 /**
  * Routes the request to the table controller to the correct method.
@@ -87,11 +87,29 @@ function patchItem(req, res, id) {
 }
  
 function replaceItem(req, res, id) {
-    res.status(200).json({ body: req.body, id: id, message: "replace" });
+    //res.status(200).json({ body: req.body, id: id, message: "replace" });
+    for(i=0;i<products.length;i++){
+        if(products[i].id == id){
+            products[i] = req.body;
+            products[i].id = id;
+            res.status(200).json({message:"Product replaced"}); 
+            return;
+        }        
+    }
+    res.status(404).json({error:"No product found with id:"+id});    
 }
  
 function deleteItem(req, res, id) {
     res.status(200).json({ id: id, message: "delete" });
+    id= req.body.id;
+    for(i=0;i<products.length;i++){
+        if(products[i].id == id){
+            delete products[i];
+            res.status(200).json({message:"Product deleted"}); 
+            return;
+        }        
+    }
+    res.status(404).json({error:"No product found with id:"+id});
 }
  
 module.exports = pimProductRouter;
