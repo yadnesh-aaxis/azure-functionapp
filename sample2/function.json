@@ -5,7 +5,7 @@
             "name": "req",
             "type": "httpTrigger",
             "direction": "in",
-            "authLevel": "function",
+            "authLevel": "anonymous",
             "methods": [ "GET", "POST", "PATCH", "PUT", "DELETE" ],
             "route": "pim/product/{id:alpha?}"
         },
